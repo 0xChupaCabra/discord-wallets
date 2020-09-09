@@ -2,18 +2,17 @@ import discord
 from discord.ext import commands
 import asyncio
 import json
-#from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 import mysql.connector
-#import os
 import time
 import random
 import requests
+
 #SQL connection
 
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    passwd="vdS6NxQ9ob8peiR",
+    passwd="pass",
     database="wallets",
     autocommit=True
 )
@@ -23,8 +22,8 @@ mycursor = mydb.cursor()
 bot = commands.Bot(command_prefix='!')
 @bot.event
 async def on_ready():
-    channel = bot.get_channel(561528293220941824)
-#    print("hello")
+    channel = bot.get_channel(CHANNELID) #EDIT HERE
+
     mycursor.execute("SELECT * FROM info")
     wallets = mycursor.fetchall()
     for x in wallets:
@@ -55,4 +54,4 @@ async def on_ready():
         
 
 
-bot.run('NzIzMTgxOTMxODU1ODcyMDQw.Xut5rw.MLhogsinn_IzmQwC_cExpfH2FZ0')
+bot.run('DISCORDTOKEN') #EDIT HERE
